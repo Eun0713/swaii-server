@@ -11,3 +11,19 @@ export const saveGesture = async (email, gesture) => {
 
   return data;
 };
+
+export const getGesturesByEmail = async (email) => {
+  const { data, error } = await supabase
+    .from("gestures")
+    .select("gesture_data, created_at")
+    .eq("email", email);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data.map((item) => ({
+    ...item.gesture_data,
+    created_at: item.created_at,
+  }));
+};
