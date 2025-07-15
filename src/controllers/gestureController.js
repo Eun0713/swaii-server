@@ -1,4 +1,8 @@
-import { saveGesture, getGesturesByEmail } from "../services/gestureService.js";
+import {
+  saveGesture,
+  getGesturesByEmail,
+  deleteGesture,
+} from "../services/gestureService.js";
 import { HTTP_STATUS } from "../constants/httpStatus.js";
 import { MESSAGES } from "../constants/messages.js";
 
@@ -43,5 +47,24 @@ export const getGesturesController = async (req, res) => {
     res
       .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
       .json({ message: MESSAGES.GESTURE_FETCH_FAIL, error: error.message });
+  }
+};
+
+export const deleteGestureController = async (req, res) => {
+  const { email, gestureName } = req.body;
+
+  if (!email || !gestureName) {
+    return res
+      .status(HTTP_STATUS.BAD_REQUEST)
+      .json({ message: MESSAGES.INVALID_REQUEST });
+  }
+
+  try {
+    await deleteGesture(email, gestureName);
+    res.status(HTTP_STATUS.OK).json({ message: MESSAGES.DELETE_SUCCESS });
+  } catch (error) {
+    res
+      .status(HTTP_STATUS.INTERNAL_SERVER_ERROR)
+      .json({ message: MESSAGES.DELETE_FAIL });
   }
 };
