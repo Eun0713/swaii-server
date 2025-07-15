@@ -7,4 +7,6 @@ export const MESSAGES = {
   INVALID_REQUEST: "잘못된 요청입니다.",
   DELETE_SUCCESS: "제스처 삭제 완료",
   DELETE_FAIL: "제스처 삭제 실패",
+  SAVE_MAPPING_SUCCESS: "매핑 저장 완료",
+  SAVE_MAPPING_FAIL: "매핑 저장 실패",
 };
