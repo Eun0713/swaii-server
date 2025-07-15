@@ -9,4 +9,6 @@ export const MESSAGES = {
   DELETE_FAIL: "제스처 삭제 실패",
   SAVE_MAPPING_SUCCESS: "매핑 저장 완료",
   SAVE_MAPPING_FAIL: "매핑 저장 실패",
+  MAPPING_FETCH_SUCCESS: "매핑 조회 완료",
+  MAPPING_FETCH_FAIL: "매핑 조회 실패",
 };
