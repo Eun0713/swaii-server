@@ -20,3 +20,14 @@ export const getMappingsByEmail = async (email) => {
 
   return data;
 };
+
+export const deleteMapping = async (email, site, gesture, action) => {
+  const { error } = await supabase
+    .from("gesture_mappings")
+    .delete()
+    .match({ email, site, gesture, action });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+};
