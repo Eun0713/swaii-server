@@ -11,4 +11,6 @@ export const MESSAGES = {
   SAVE_MAPPING_FAIL: "매핑 저장 실패",
   MAPPING_FETCH_SUCCESS: "매핑 조회 완료",
   MAPPING_FETCH_FAIL: "매핑 조회 실패",
+  MAPPING_DELETE_SUCCESS: "매핑 삭제 완료",
+  MAPPING_DELETE_FAIL: "매핑 삭제 실패",
 };
