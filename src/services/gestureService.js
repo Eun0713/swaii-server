@@ -27,3 +27,15 @@ export const getGesturesByEmail = async (email) => {
     created_at: item.created_at,
   }));
 };
+
+export const deleteGesture = async (email, gestureName) => {
+  const { error } = await supabase
+    .from("gestures")
+    .delete()
+    .filter("gesture_data->>name", "eq", gestureName)
+    .eq("email", email);
+
+  if (error) {
+    throw new Error(error.message);
+  }
+};
