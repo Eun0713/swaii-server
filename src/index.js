@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import supabase from "./libs/supabaseClient.js";
 import gestureRoutes from "./routes/gestureRoutes.js";
+import mappingRoutes from "./routes/mappingRoutes.js";
 
 dotenv.config();
 
@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/gestures", gestureRoutes);
+app.use("/mappings", mappingRoutes);
 
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on http://localhost:${PORT}`);
