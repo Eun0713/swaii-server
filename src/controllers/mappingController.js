@@ -82,18 +82,11 @@ export const updateMappingController = async (req, res) => {
 
   try {
     await updateMapping({ email, site, gesture, action, updated });
-
-    return res.status(HTTP_STATUS.OK).json({
+    res.status(HTTP_STATUS.OK).json({
       message: MESSAGES.MAPPING_UPDATE_SUCCESS,
     });
   } catch (error) {
-    if (error.message === "GESTURE_NOT_FOUND") {
-      return res.status(HTTP_STATUS.BAD_REQUEST).json({
-        message: MESSAGES.GESTURE_NOT_FOUND,
-      });
-    }
-
-    return res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
+    res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
       message: MESSAGES.MAPPING_UPDATE_FAIL,
     });
   }

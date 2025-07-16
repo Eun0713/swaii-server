@@ -41,21 +41,6 @@ export const updateMapping = async ({
 }) => {
   const updateData = { ...updated };
 
-  if (updated.gesture) {
-    const { data, error } = await supabase
-      .from("gestures")
-      .select("points")
-      .eq("email", email)
-      .eq("name", updated.gesture)
-      .single();
-
-    if (error || !data) {
-      throw new Error("GESTURE_NOT_FOUND");
-    }
-
-    updateData.points = data.points;
-  }
-
   const { error } = await supabase
     .from("gesture_mappings")
     .update(updateData)

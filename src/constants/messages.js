@@ -15,5 +15,4 @@ export const MESSAGES = {
   MAPPING_DELETE_FAIL: "매핑 삭제 실패",
   MAPPING_UPDATE_SUCCESS: "매핑 수정 성공",
   MAPPING_UPDATE_FAIL: "매핑 수정 실패",
-  GESTURE_NOT_FOUND: "해당 이름의 제스처를 찾을 수 없습니다.",
 };
