@@ -31,3 +31,37 @@ export const deleteMapping = async (email, site, gesture, action) => {
     throw new Error(error.message);
   }
 };
+
+export const updateMapping = async ({
+  email,
+  site,
+  gesture,
+  action,
+  updated,
+}) => {
+  const updateData = { ...updated };
+
+  if (updated.gesture) {
+    const { data, error } = await supabase
+      .from("gestures")
+      .select("points")
+      .eq("email", email)
+      .eq("name", updated.gesture)
+      .single();
+
+    if (error || !data) {
+      throw new Error("GESTURE_NOT_FOUND");
+    }
+
+    updateData.points = data.points;
+  }
+
+  const { error } = await supabase
+    .from("gesture_mappings")
+    .update(updateData)
+    .match({ email, site, gesture, action });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+};
